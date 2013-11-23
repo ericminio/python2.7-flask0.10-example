@@ -5,7 +5,9 @@ I pass level 1.1 :)
 [fork](https://help.github.com/articles/fork-a-repo) me and [clone](https://help.github.com/articles/fork-a-repo#step-2-clone-your-fork) your repository locally.
 
 [install python 2.7](http://www.python.org/download/)
+
 [install virtualenv](https://pypi.python.org/pypi/virtualenv) globally
+
 [install fabric](http://docs.fabfile.org/en/1.8/) globally
 
 setup your environment: in the directory of the repo, run
@@ -29,6 +31,7 @@ fab test
 ```
 
 Test should be much faster and 3 tests should pass
+
 [introduction to flask testing](http://flask.pocoo.org/docs/testing/)
 
 ## See it working
