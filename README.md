@@ -6,8 +6,6 @@ I pass level 1.1 :)
 
 [install python 2.7](http://www.python.org/download/)
 
-[install virtualenv](https://pypi.python.org/pypi/virtualenv) globally
-
 [install fabric](http://docs.fabfile.org/en/1.8/) globally
 
 setup your environment: in the directory of the repo, run

@@ -1,10 +1,6 @@
-import sys
-from fabric.context_managers import prefix
 from fabric.decorators import task
 from fabric.operations import local
 from test.features.driver.server_driver import ServerDriver
-
-VIRTUALENV = '.venv'
 
 
 @task(default=True)
@@ -14,40 +10,29 @@ def default():
 
 @task
 def setup():
-    local('virtualenv --distribute --python=python2.7 {env}'.format(env=VIRTUALENV))
     install_requirements()
 
 
 @task
 def install_requirements():
-    with prefix(_activate_virtual_env()):
-        local('pip install -r requirements.txt --use-mirrors')
-        local('pip install -r requirements-test.txt --use-mirrors')
+    local('pip install -r requirements.txt --use-mirrors')
+    local('pip install -r requirements-test.txt --use-mirrors')
 
 
 @task
 def unit():
-    with prefix(_activate_virtual_env()):
-        local("nosetests -a '!needs_server'")
+    local("nosetests -a '!needs_server'")
 
 
 @task
 def test():
-    with prefix(_activate_virtual_env()), YoseServer(port=8080):
+    with YoseServer(port=8080):
         local("nosetests --tc=server_url:'http://localhost:8080'")
 
 
 @task
 def run_server():
-    with prefix(_activate_virtual_env()):
-        local("python -c 'import yose; yose.app.run(port=8080)'")
-
-
-def _activate_virtual_env():
-    if not hasattr(sys, 'real_prefix'):
-        return '. {env}/bin/activate'.format(env=VIRTUALENV)
-    else:
-        return 'true'
+    local("python -c 'import yose; yose.app.run(port=8080)'")
 
 
 class YoseServer():
