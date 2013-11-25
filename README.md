@@ -25,7 +25,7 @@ Test should be successful and 6 tests should pass
 to run only the unit tests
 
 ```sh
-fab test
+fab unit
 ```
 
 Test should be much faster and 3 tests should pass
