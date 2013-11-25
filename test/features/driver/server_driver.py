@@ -1,9 +1,8 @@
 import socket
 import subprocess
 import time
-from ip_port_in_use_matcher import in_use
 
-from hamcrest import assert_that, is_not
+from test.features.driver.ip_port_in_use import IpPortInUse
 
 
 class ServerDriver(object):
@@ -14,7 +13,8 @@ class ServerDriver(object):
         self.proc = None
 
     def start(self, cmd, **kwargs):
-        assert_that((self.ip_address, self.port), is_not(in_use()))
+        if self._is_in_use(self.ip_address, self.port):
+            raise Exception("Cannot start the server, {0}:{1} is already in use".format(self.ip_address, self.port))
 
         self.proc = subprocess.Popen(cmd, **kwargs)
         self._wait_until_port_is_opened(self.port)
@@ -39,3 +39,6 @@ class ServerDriver(object):
                 break
             except socket.error:
                 time.sleep(1)
+
+    def _is_in_use(self, ip_address, port):
+        return IpPortInUse(ip_address, port).is_in_use()
