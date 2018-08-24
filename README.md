@@ -1,6 +1,6 @@
 Playing [YoseTheGame](http://yosethegame.com) with python/flask
 
-Current score is 40
+Current score is 50
 
 ## Get ready
 
