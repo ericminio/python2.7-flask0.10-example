@@ -1,12 +1,13 @@
 from flask import Flask
 from flask import render_template, request
-import challenges.ping, challenges.primefactors
+from yose.challenges.ping import pong 
+from yose.challenges.primefactors import poweroftwo
 
 app = Flask(__name__)
 
 @app.route('/ping', methods=['GET'])
 def alive():
-    return challenges.ping.pong()
+    return pong()
 
 @app.route('/')
 def index():
@@ -14,5 +15,5 @@ def index():
 
 @app.route('/primeFactors')
 def primeFactors():
-    return challenges.primefactors.poweroftwo(int(request.args.get('number')))
+    return poweroftwo(int(request.args.get('number')))
     
