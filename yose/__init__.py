@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import jsonify, make_response
+from flask import jsonify, make_response, render_template
 
 app = Flask(__name__)
 
@@ -11,4 +11,4 @@ def alive():
 
 @app.route('/')
 def index():
-    return 'Hello Yose. <a id="repository-link" href="https://github.com/ericminio/python2.7-flask0.10-example">The source</a>'
+    return render_template('home.html')
