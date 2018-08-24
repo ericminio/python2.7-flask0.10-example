@@ -8,3 +8,7 @@ def alive():
     return make_response(jsonify(
         {'alive': True}
     ))
+
+@app.route('/')
+def index():
+    return '<a id="repository-link" href="https://github.com/ericminio/python2.7-flask0.10-example">The source</a>'
