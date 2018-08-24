@@ -11,4 +11,4 @@ def alive():
 
 @app.route('/')
 def index():
-    return '<a id="repository-link" href="https://github.com/ericminio/python2.7-flask0.10-example">The source</a>'
+    return 'Hello Yose. <a id="repository-link" href="https://github.com/ericminio/python2.7-flask0.10-example">The source</a>'
