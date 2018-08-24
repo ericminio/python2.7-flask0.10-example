@@ -16,8 +16,15 @@ class BoardChallengeFeatureTest(unittest.TestCase):
 
     @istest
     def has_expected_title(self):        
-        with Browser('firefox') as browser:
+        with Browser('firefox', headless=True) as browser:
             browser.visit(config['server_url'] + '/minesweeper')
             assert_that(browser.is_element_present_by_xpath('//label[@id="title" and text()="Minesweeper"]', wait_time=1), is_(True))
 
     
+    @istest
+    def has_expected_grid(self):        
+        with Browser('firefox', headless=True) as browser:
+            browser.visit(config['server_url'] + '/minesweeper')
+            assert_that(browser.is_element_present_by_css('#cell-1x1', wait_time=1), is_(True))
+            assert_that(browser.is_element_present_by_css('#cell-1x2', wait_time=1), is_(True))
+            assert_that(browser.is_element_present_by_css('#cell-8x8', wait_time=1), is_(True))
