@@ -1,6 +1,7 @@
 from flask import Flask
-from flask import render_template, make_response, jsonify, request
+from flask import render_template, request
 from challenges.ping import pong
+from challenges.primefactors import poweroftwo
 
 app = Flask(__name__)
 
@@ -14,15 +15,5 @@ def index():
 
 @app.route('/primeFactors')
 def primeFactors():
-    number = int(request.args.get('number'))
-    decomposition = []
-    while number % 2 == 0 :
-        decomposition.append(2)
-        number = number / 2
-
-    return make_response(jsonify(
-        {
-            'number': int(request.args.get('number')),
-            'decomposition': decomposition
-        }
-    ))
+    return poweroftwo(int(request.args.get('number')))
+    
