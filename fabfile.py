@@ -27,7 +27,7 @@ def unit():
 @task
 def test():
     with YoseServer(port=8080):
-        local("nosetests --tc=server_url:'http://localhost:8080'")
+        local("export PATH=$PATH:./test/features ; nosetests --tc=server_url:'http://localhost:8080'")
 
 
 @task

@@ -16,4 +16,8 @@ def index():
 @app.route('/primeFactors')
 def primeFactors():
     return poweroftwo(int(request.args.get('number')))
+
+@app.route('/minesweeper')
+def board():
+    return render_template('minesweeper.html')
     
