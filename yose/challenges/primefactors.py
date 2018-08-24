@@ -1,7 +1,7 @@
 from flask import make_response, jsonify, request
 
-def poweroftwo(input):
-    number = input
+def poweroftwo(value):
+    number = value
     decomposition = []
     candidate = 2
     while number % candidate == 0 :
@@ -10,7 +10,7 @@ def poweroftwo(input):
 
     return make_response(jsonify(
         {
-            'number': input,
+            'number': value,
             'decomposition': decomposition
         }
     ))

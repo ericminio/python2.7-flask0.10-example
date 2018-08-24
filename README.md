@@ -1,4 +1,6 @@
-I pass level 1.1 :) of [YoseTheGame](http://yosethegame.com)
+Playing [YoseTheGame](http://yosethegame.com) with python/flask
+
+Current score is 30
 
 ## Get ready
 
