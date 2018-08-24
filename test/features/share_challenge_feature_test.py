@@ -22,5 +22,5 @@ class ShareChallengeFeatureTest(unittest.TestCase):
 
     @istest
     def server_responds_expected_content(self):
-        assert_that(self.response.text, contains_string('<a id="repository-link" href="https://github.com/ericminio/python2.7-flask0.10-example">'))
+        assert_that(self.response.text, contains_string('<a id="repository-link" href="https://github.com/ericminio/yose-python">'))
 
