@@ -1,1 +1,1 @@
-web: gunicorn yose:app
+web: gunicorn yose:app -w 1
