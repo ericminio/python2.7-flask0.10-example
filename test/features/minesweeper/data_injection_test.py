@@ -9,7 +9,7 @@ from splinter import Browser
 from selenium import webdriver
 
 @attr(needs_server=True)
-class DataInjectionChallengeFeatureTest(unittest.TestCase):
+class PlayingTest(unittest.TestCase):
 
     def setUp(self):
         import logging
@@ -19,12 +19,12 @@ class DataInjectionChallengeFeatureTest(unittest.TestCase):
         self.addCleanup(self.browser.quit)
 
     @istest
-    def is_possible(self):        
+    def can_detect_lost(self):        
         self.browser.get(config['server_url'] + '/minesweeper')
         self.browser.execute_script('document.grid=[["empty", "bomb"]]')
         self.browser.execute_script('load()')
         cell = self.browser.find_element_by_id('cell-1x2')
         cell.click()
 
-        assert_that(self.browser.find_element_by_id('cell-1x2').get_attribute('class'), is_('lost'))
+        assert_that(self.browser.find_element_by_id('cell-1x2').get_attribute('class'), is_('cell lost'))
             

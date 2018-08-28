@@ -5,9 +5,11 @@ Vue.component('grid', {
             <table>
                 <tbody>
                     <tr v-for="line in size">
-                        <td class="cell" v-for="column in size" v-on:click="play(line, column)">
-                            <span v-bind:id="'cell-'+line+'x'+column">&nbsp;</span>
-                        </td>
+                        <td v-for="column in size" 
+                            v-on:click="play(line, column)"
+                            v-bind:id="'cell-'+line+'x'+column"
+                            class="cell"
+                        ></td>
                     </tr>
                 </tbody>
             </table>
@@ -15,13 +17,11 @@ Vue.component('grid', {
     `,
     methods: {
         play: function(line, column) {
-            var id = 'cell-' + line + 'x' + column; console.log(id);    
-            document.getElementById(id).className = 'lost'
+            var id = 'cell-' + line + 'x' + column; 
+            document.getElementById(id).className = 'cell lost'
         }
     }
 })
 
 load = function() {
-
 }
-

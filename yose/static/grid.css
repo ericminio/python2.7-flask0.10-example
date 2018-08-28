@@ -3,3 +3,7 @@
     width: 20px;
     height: 20px;
 }
+
+.lost {
+    background-color: red;
+}
