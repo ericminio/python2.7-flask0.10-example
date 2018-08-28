@@ -6,4 +6,8 @@
 
 .lost {
     background-color: red;
+    background-image: url(bomb.svg);
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: 75%
 }
