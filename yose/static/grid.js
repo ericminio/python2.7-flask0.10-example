@@ -18,10 +18,17 @@ Vue.component('grid', {
     methods: {
         play: function(line, column) {
             var id = 'cell-' + line + 'x' + column; 
-            document.getElementById(id).className = 'cell lost'
+            var cell = document.getElementById(id);
+            if (column == 1) {
+                cell.className = 'cell safe surrounded-by-1';
+                cell.innerHTML = '' + document.grid.length
+            }
+            else {
+                cell.className = 'cell lost';
+                cell.innerHTML = '';
+            }
         }
     }
 })
 
-load = function() {
-}
+

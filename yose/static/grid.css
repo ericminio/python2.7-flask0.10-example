@@ -2,6 +2,7 @@
     background-color: lightgray;
     width: 20px;
     height: 20px;
+    text-align: center
 }
 
 .lost {
@@ -10,4 +11,8 @@
     background-position: center; 
     background-repeat: no-repeat;
     background-size: 75%
+}
+
+.surrounded-by-1 {
+    color: blue
 }

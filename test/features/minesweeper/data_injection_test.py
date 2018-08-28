@@ -17,14 +17,28 @@ class PlayingTest(unittest.TestCase):
         selenium_logger.setLevel(logging.WARNING)
         self.browser = webdriver.Firefox()
         self.addCleanup(self.browser.quit)
-
-    @istest
-    def can_detect_lost(self):        
         self.browser.get(config['server_url'] + '/minesweeper')
         self.browser.execute_script('document.grid=[["empty", "bomb"]]')
         self.browser.execute_script('load()')
+
+    @istest
+    def can_detect_lost(self):                
         cell = self.browser.find_element_by_id('cell-1x2')
         cell.click()
 
-        assert_that(self.browser.find_element_by_id('cell-1x2').get_attribute('class'), is_('cell lost'))
+        assert_that(cell.get_attribute('class'), is_('cell lost'))
+
+    @istest
+    def can_detect_safe(self):        
+        cell = self.browser.find_element_by_id('cell-1x1')
+        cell.click()
+
+        assert_that(cell.get_attribute('class'), is_('cell safe surrounded-by-1'))
+
+    @istest
+    def displays_bomb_count(self):        
+        cell = self.browser.find_element_by_id('cell-1x1')
+        cell.click()
+
+        assert_that(cell.text, is_('1'))
             
