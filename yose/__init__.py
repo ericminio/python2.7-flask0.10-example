@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, request
+from flask import render_template, request, send_file
 from yose.challenges.ping import pong 
 from yose.challenges.primefactors import poweroftwo
 
@@ -19,5 +19,5 @@ def primeFactors():
 
 @app.route('/minesweeper')
 def board():
-    return render_template('minesweeper.html')
+    return send_file('challenges/minesweeper.html')
     
