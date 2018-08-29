@@ -38,6 +38,6 @@ var grid = Vue.extend({
             }
         }
     }
-})
+});
 
 
