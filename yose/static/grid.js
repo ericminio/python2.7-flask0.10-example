@@ -21,12 +21,13 @@ var grid = Vue.extend({
         };
     },
     methods: {
-        digest: function(cells) {
-            this.cells = cells;            
+        digest: function(document) {
+            this.cells = document.grid;
+            this.document = document;            
         },
         play: function(line, column) {
             var id = 'cell-' + line + 'x' + column; 
-            var cell = document.getElementById(id);
+            var cell = this.document.getElementById(id);
             if (column == 1) {
                 cell.className = 'cell safe surrounded-by-1';
                 cell.innerHTML = '' + this.cells.length
