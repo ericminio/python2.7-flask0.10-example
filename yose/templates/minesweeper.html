@@ -9,21 +9,27 @@
     <body>
         <div id="app">
             <label id="title">[[title]]</label>
-            <grid v-bind:size="8"></grid>
+            <grid v-bind:size="8" ref="board"></grid>
         </div>
 
         <script>            
-            new Vue({
+            var app = new Vue({
                 el: '#app',
                 delimiters: [ '[[', ']]' ],
                 data: {
                     title: 'Minesweeper'
-                }
+                },
+                components: { 'grid':grid }
             })    
 
             load = function() {
-                
+                app.$refs.board.digest(document.grid);
             }
+
+            document.grid = [
+                ['empty', 'bomb']
+            ];
+            load();
         </script>
     </body>
 </html>

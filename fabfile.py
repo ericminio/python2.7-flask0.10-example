@@ -29,7 +29,7 @@ def test():
     import platform
     if platform.system() == 'Darwin':
         with YoseServer(port=8080):
-            local("export PATH=$PATH:./test/features/geckodriver/mac ; nosetests test/features/minesweeper/data_injection_test.py:PlayingTest --tc=server_url:'http://localhost:8080'")
+            local("export PATH=$PATH:./test/features/geckodriver/mac ; nosetests --tc=server_url:'http://localhost:8080'")
     else:
         with YoseServer(port=8080):
             local("export PATH=$PATH:./test/features/geckodriver/linux ; nosetests --tc=server_url:'http://localhost:8080'")
