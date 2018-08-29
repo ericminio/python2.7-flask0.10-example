@@ -28,14 +28,16 @@ var grid = Vue.extend({
         play: function(line, column) {
             var id = 'cell-' + line + 'x' + column; 
             var cell = this.document.getElementById(id);
-            if (column == 1) {
+
+            if (this.cells[line-1][column-1] == 'bomb') {
+                cell.className = 'cell lost';
+                cell.innerHTML = '';
+            } else {
                 cell.className = 'cell safe surrounded-by-1';
                 cell.innerHTML = '' + this.cells.length
             }
-            else {
-                cell.className = 'cell lost';
-                cell.innerHTML = '';
-            }
+            
+            return cell;
         }
     }
 });

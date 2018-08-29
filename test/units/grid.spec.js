@@ -6,28 +6,41 @@ let source = `
     };
     `
     + grid + ' return grid;';
-let sut = (new Function(source))();
 
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 let expect = require('chai').expect;
 
-describe('play', ()=>{
+describe('playing', ()=>{
 
-    it('can be invoked', ()=>{
-        var document = new JSDOM(`
-            <html>
-                <body>
-                    <div id="cell-1x1"></div>
-                </body>
-            </html>`).window.document;
+    let sut;
+    let document;
+    beforeEach(()=>{
+        sut = (new Function(source))();
+        document = new JSDOM(`
+            <div id="cell-1x1"></div>
+            <div id="cell-1x2"></div>
+        `).window.document;
         document.grid = [
             [ 'empty', 'bomb' ]
         ];
         sut.digest(document);
-        sut.play(1, 1);
-        let cell = document.getElementById('cell-1x1');
+    });
+
+    it('can be safe', ()=>{
+        let cell = sut.play(1, 1);
 
         expect(cell.className).to.equal('cell safe surrounded-by-1');
+    });
+
+    it('reveals surrounding bomb count when safe', ()=>{
+        let cell = sut.play(1, 1);
+
+        expect(cell.innerHTML).to.equal('1');
+    });
+    it('is dangerous', ()=>{
+        let cell = sut.play(1, 2);
+
+        expect(cell.className).to.equal('cell lost');
     });
 });
