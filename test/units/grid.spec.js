@@ -33,9 +33,9 @@ describe('playing', ()=>{
         expect(cell.className).to.equal('cell lost');
     });
     it('can be safe', ()=>{
-        let cell = sut.play(1, 1);
+        let cell = sut.play(2, 2);
 
-        expect(cell.className).to.equal('cell safe surrounded-by-1');
+        expect(cell.className).to.equal('cell safe surrounded-by-3');
     });
 
     it('reveals surrounding bomb count when safe', ()=>{
