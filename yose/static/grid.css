@@ -1,13 +1,24 @@
+table {
+    border-spacing: 0px;
+}
+
 .cell {
-    background-color: lightgray;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    border: black solid 1px;
+    width: 30px;
+    height: 30px;
+    text-align: center;  
+    font-size: medium;  
+    background-image: url(brick.svg);
+    background-position: center; 
+    background-repeat: no-repeat;    
+    padding: 0px;    
 }
 
 .safe {
-    border: lightgray solid 1px;
+    width: 28px;
+    height: 28px;
+    background-image:none;
+    background-color: WhiteSmoke;   
+    border: lightgray solid 1px;    
 }
 
 .lost {
@@ -41,9 +52,4 @@
 }
 .surrounded-by-8 {
     color: darkblue;
-}
-
-.surrounded-by-0 {
-    background-color: lightgray;
-    border: lightgray solid 1px;
 }
