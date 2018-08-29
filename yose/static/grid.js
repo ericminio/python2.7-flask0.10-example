@@ -29,15 +29,24 @@ var grid = Vue.extend({
             var id = 'cell-' + line + 'x' + column; 
             var cell = this.document.getElementById(id);
 
-            if (this.cells[line-1][column-1] == 'bomb') {
+            if (this.isThereOneBombAt(line, column)) {
                 cell.className = 'cell lost';
                 cell.innerHTML = '';
             } else {
                 cell.className = 'cell safe surrounded-by-1';
-                cell.innerHTML = '' + this.cells.length
+                cell.innerHTML = 
+                    this.isThereOneBombAt(line-1, column-1) + this.isThereOneBombAt(line-1, column) + this.isThereOneBombAt(line-1, column+1) +
+                    this.isThereOneBombAt(line, column-1)                                           + this.isThereOneBombAt(line, column+1) +
+                    this.isThereOneBombAt(line+1, column-1) + this.isThereOneBombAt(line+1, column) + this.isThereOneBombAt(line+1, column+1);
             }
             
             return cell;
+        },
+        isThereOneBombAt: function(line, column) {
+            if (this.cells[line-1] && this.cells[line-1][column-1] == 'bomb') {
+                return 1;
+            }
+            return 0;
         }
     }
 });
