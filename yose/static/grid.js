@@ -33,14 +33,12 @@ var grid = Vue.extend({
                 cell.className = 'cell lost';
                 cell.innerHTML = '';
             } else {
-                let count = 
+                var count = 
                     this.isThereOneBombAt(line-1, column-1) + this.isThereOneBombAt(line-1, column) + this.isThereOneBombAt(line-1, column+1) +
                     this.isThereOneBombAt(line, column-1)                                           + this.isThereOneBombAt(line, column+1) +
                     this.isThereOneBombAt(line+1, column-1) + this.isThereOneBombAt(line+1, column) + this.isThereOneBombAt(line+1, column+1);
+                count == 0 ? cell.innerHTML = '' : cell.innerHTML = count;                                  
                 cell.className = 'cell safe surrounded-by-' + count;
-                count = count == 0 ? '' : count;
-                cell.innerHTML = count;
-                    
             }
             
             return cell;

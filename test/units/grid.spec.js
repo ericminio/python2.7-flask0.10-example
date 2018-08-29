@@ -11,7 +11,7 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 let expect = require('chai').expect;
 
-describe('playing', ()=>{
+describe('playing Minesweeper', ()=>{
 
     let sut;
     let document;
