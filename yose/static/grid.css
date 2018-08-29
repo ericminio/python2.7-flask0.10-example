@@ -2,7 +2,12 @@
     background-color: lightgray;
     width: 20px;
     height: 20px;
-    text-align: center
+    text-align: center;
+    border: black solid 1px;
+}
+
+.safe {
+    border: 0px;
 }
 
 .lost {

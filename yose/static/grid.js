@@ -38,6 +38,7 @@ var grid = Vue.extend({
                     this.isThereOneBombAt(line, column-1)                                           + this.isThereOneBombAt(line, column+1) +
                     this.isThereOneBombAt(line+1, column-1) + this.isThereOneBombAt(line+1, column) + this.isThereOneBombAt(line+1, column+1);
                 cell.className = 'cell safe surrounded-by-' + count;
+                count = count == 0 ? '' : count;
                 cell.innerHTML = count;
                     
             }
